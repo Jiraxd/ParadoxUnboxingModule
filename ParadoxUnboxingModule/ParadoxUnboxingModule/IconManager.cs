@@ -23,7 +23,7 @@ namespace ParadoxUnboxingModule
 
             foreach (ItemAsset asset in assets)
             {
-                var ready = new ItemIconReady((icon) =>
+                var ready = new ItemIconReady((handle,icon) =>
                 {
                     AddUnturnedIcon(asset.id, icon.EncodeToPNG());
                 });
