@@ -1,6 +1,6 @@
 # ParadoxUnboxingModule
-*This is a version that contains fixes for errors that appeared over the years of this module existing*\n
-*If it doesn't work correctly, contact me on discord: j1r4*
+- *This is a version that contains fixes for errors that appeared over the years of this module existing*
+- *If it doesn't work correctly, contact me on discord: j1r4*
 
 **How to use:**
 1. Download the latest release from here https://github.com/Jiraxd/ParadoxUnboxingModule/releases/tag/1.2
