@@ -1,5 +1,5 @@
 # ParadoxUnboxingModule
-*This is a version that contains fixes for errors that appeared over the years of this module existing*
+*This is a version that contains fixes for errors that appeared over the years of this module existing*\n
 *If it doesn't work correctly, contact me on discord: j1r4*
 
 **How to use:**
