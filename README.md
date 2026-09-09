@@ -1,6 +1,9 @@
 # ParadoxUnboxingModule
+*This is a version that contains fixes for errors that appeared over the years of this module existing*
+*If it doesn't work correctly, contact me on discord: j1r4*
+
 **How to use:**
-1. Download the latest release from here https://github.com/Paradox304/ParadoxUnboxingModule/releases/tag/1.0
+1. Download the latest release from here https://github.com/Jiraxd/ParadoxUnboxingModule/releases/tag/1.2
 2. Extract this file and put the folder "ParadoxUnboxingModule" in Modules folder of your Unturned directory (**NOT SERVER**).
 3. Subscribe to any mods you have on your server and need to get the icons from.
 4. Load up Unturned **WITHOUT BATTLEYE**
