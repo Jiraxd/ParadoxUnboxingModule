@@ -1,5 +1,6 @@
 ﻿using SDG.Unturned;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -14,20 +15,40 @@ namespace ParadoxUnboxingModule
         void Start()
         {
             DontDestroyOnLoad(this);
-            Player.onPlayerCreated += (p) => LoadItems();
+            Player.onPlayerCreated += (p) => StartCoroutine(LoadItems());
         }
 
-        public void LoadItems()
+        public IEnumerator LoadItems()
         {
-            var assets = Assets.find(EAssetType.ITEM).Cast<ItemAsset>().ToList();
+            yield return new WaitForSeconds(5f);
+            var assets = Assets.find(EAssetType.ITEM);
 
-            foreach (ItemAsset asset in assets)
+            foreach (Asset asset in assets)
             {
-                var ready = new ItemIconReady((handle,icon) =>
+                try
                 {
-                    AddUnturnedIcon(asset.id, icon.EncodeToPNG());
-                });
-                ItemTool.getIcon(asset.id, 0, asset.quality, asset.getState(), asset, null, string.Empty, string.Empty, asset.size_x * 250, asset.size_y * 250, false, true, ready);
+                    var item = new Item(asset.id, true);
+                    ItemTool.getIcon(asset.id, item.quality, item.state, (int handle, Texture2D texture) =>
+                    {
+                        RenderTexture tmp = RenderTexture.GetTemporary(texture.width, texture.height, 0, RenderTextureFormat.ARGB32, RenderTextureReadWrite.sRGB);
+                        Graphics.Blit(texture, tmp);
+                        RenderTexture previous = RenderTexture.active;
+                        RenderTexture.active = tmp;
+                        Texture2D readableTexture = new Texture2D(texture.width, texture.height, TextureFormat.ARGB32, false);
+                        readableTexture.ReadPixels(new Rect(0, 0, tmp.width, tmp.height), 0, 0);
+                        readableTexture.Apply();
+                        RenderTexture.active = previous;
+                        RenderTexture.ReleaseTemporary(tmp);
+
+                        byte[] bytes = readableTexture.EncodeToPNG();
+                        AddUnturnedIcon(asset.id, bytes);
+                        UnityEngine.Object.Destroy(readableTexture);
+                    });
+                }
+                catch (Exception ex)
+                {
+                    Debug.Log($"Failed to load icon for item {asset.id}: {ex.Message}");
+                }
             }
         }
 
