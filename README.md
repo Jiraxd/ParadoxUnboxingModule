@@ -2,6 +2,9 @@
 - *This is a version that contains fixes for errors that appeared over the years of this module existing*
 - *If it doesn't work correctly, contact me on discord: j1r4*
 
+**What does this do?**
+- Upon joining a singleplayer map it takes all your loaded asset bundles (items) and makes .png files for all of them as if they were taken from Unturned. The photos are named: Itemid.png | example: 334.png
+
 **How to use:**
 1. Download the latest release from here https://github.com/Jiraxd/ParadoxUnboxingModule/releases/tag/1.2
 2. Extract this file and put the folder "ParadoxUnboxingModule" in Modules folder of your Unturned directory (**NOT SERVER**).
